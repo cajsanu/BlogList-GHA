@@ -6,11 +6,11 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node index.js",
     "dev": "cross-env NODE_ENV=development nodemon index.js",
-    "build:ui": "rm -rf dist && cd ./blog_list_frontend && npm run build && cp -r dist ..",
+    "build:ui": "rm -rf dist && cd ./blogListClientSide && npm run build && cp -r dist ..",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push",
     "eslint": "eslint .",
     "eslint:fix": "eslint. --fix",
-    "test": "cross-env NODE_ENV=test jest --testPathIgnorePatterns=blog_list_frontend/ --verbose --runInBand ",
+    "test": "cross-env NODE_ENV=test jest --testPathIgnorePatterns=blogListClientSide/ --verbose --runInBand ",
     "start:test": "NODE_ENV=test node index.js",
     "cypress:open": "cypress open"
   },
