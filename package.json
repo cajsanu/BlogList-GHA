@@ -8,8 +8,8 @@
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "build:ui": "rm -rf dist && cd ./blog_list_frontend && npm run build && cp -r dist ..",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push",
-    "lint": "eslint .",
-    "lint:fix": "eslint. --fix",
+    "eslint": "eslint .",
+    "eslint:fix": "eslint. --fix",
     "test": "cross-env NODE_ENV=test jest --testPathIgnorePatterns=blog_list_frontend/ --verbose --runInBand ",
     "start:test": "NODE_ENV=test node index.js",
     "cypress:open": "cypress open"

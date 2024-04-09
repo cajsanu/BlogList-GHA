@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState } from "react";
 
 export const useField = (type) => {
@@ -14,16 +13,3 @@ export const useField = (type) => {
   };
 };
 
-// export const useService = (baseUrl) => {
-//   const [resources, setResources] = useState([]);
-//   const getAll = async () => {
-//     const response = await axios.get(baseUrl);
-//     setResources(response.data);
-//   };
-
-//   const services = {
-//     getAll,
-//   };
-
-//   return [resources, services];
-// };

@@ -39,16 +39,16 @@ Cypress.Commands.add("createBlog", ({ title, author, url, likes }) => {
     url: "http://localhost:3003/api/blog_list",
     method: "POST",
     body: {
-        title,
-        author,
-        url,
-        likes
-      },
+      title,
+      author,
+      url,
+      likes,
+    },
     headers: {
       authorization: `Bearer ${
         JSON.parse(localStorage.getItem("loggedBlogappUser")).token
       }`,
     },
-  })
+  });
   cy.visit("");
 });

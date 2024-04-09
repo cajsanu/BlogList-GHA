@@ -47,28 +47,28 @@ describe("Blog app", function () {
         title: "One like",
         author: "One",
         url: "one.com",
-        likes: 1
+        likes: 1,
       });
       cy.createBlog({
         title: "Two like",
         author: "Two",
         url: "two.com",
-        likes: 2
+        likes: 2,
       });
       cy.createBlog({
         title: "Three like",
         author: "Three",
         url: "three.com",
-        likes: 3
+        likes: 3,
       });
-    })
+    });
     it.only("Blogs are orderd based on number of likes", function () {
-      cy.get(".Blog").eq(0).should("contain", "Three like")
-      cy.get(".Blog").eq(1).should("contain", "Two like")
-      cy.get(".Blog").eq(2).should("contain", "One like")
-    })
-  })
-  
+      cy.get(".Blog").eq(0).should("contain", "Three like");
+      cy.get(".Blog").eq(1).should("contain", "Two like");
+      cy.get(".Blog").eq(2).should("contain", "One like");
+    });
+  });
+
   describe("When logged in", function () {
     beforeEach(function () {
       cy.login({ username: "CBA", password: "sekretmystery" });
@@ -84,7 +84,10 @@ describe("Blog app", function () {
         .parent()
         .contains("button", "View")
         .click();
-      cy.contains("Blog about Cypress").parent().contains("button", "Like").click();
+      cy.contains("Blog about Cypress")
+        .parent()
+        .contains("button", "Like")
+        .click();
       cy.contains("Blog about Cypress").parent().contains("1 likes");
     });
     it("a blog can be deleted", function () {
@@ -109,7 +112,7 @@ describe("Blog app", function () {
       cy.login({ username: "IKR", password: "easypeasylemonsqueezy" });
       cy.contains("Failure logged in");
       cy.contains("Blog about Cypress");
-      cy.contains("View").click()
+      cy.contains("View").click();
       cy.get(".Blog").should("not.contain", "Delete");
     });
   });
