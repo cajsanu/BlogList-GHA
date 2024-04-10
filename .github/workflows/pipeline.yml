@@ -21,18 +21,33 @@ jobs:
       - name: Check style
         run: npm run eslint
       - name: Run build
-        run: npm run build:ui 
+        run: npm run build:ui
       - name: Test
         run: npm run test
-    #   - name: e2e tests
-    #     uses: cypress-io/github-action@v5
-    #     with:
-    #       command: npm run test:e2e
-    #       start: npm run start:test
-    #       wait-on: http://localhost:3003
+      #   - name: e2e tests
+      #     uses: cypress-io/github-action@v5
+      #     with:
+      #       command: npm run test:e2e
+      #       start: npm run start:test
+      #       wait-on: http://localhost:3003
       - name: Trigger deployment
         if: ${{ github.event_name == 'push' && !(contains(join(github.event.commits.*.message), 'skip')) }}
         #push is the event when a pull request is being merged to main && if the commit message contains skip then don't merge
         run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_DEPLOY_HOOK_SRV }}?key=${{ secrets.RENDER_DEPLOY_HOOK_KEY }}
 
-     
+  tag_release:
+    needs: [simple_deployment_pipeline]
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+          fetch-depth: "0"
+      - name: Bump version and push tag
+        if: ${{ github.event_name == 'push' && !(contains(join(github.event.commits.*.message), 'skip')) }}
+        uses: anothrNick/github-tag-action@1.67.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
