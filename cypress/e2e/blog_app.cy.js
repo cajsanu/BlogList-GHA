@@ -1,6 +1,6 @@
 describe("Blog app", function () {
   it("random, no need for test api", function () {
-    cy.visit(""), cy.contains("Blogs");
+    cy.visit("http://localhost:3003"), cy.contains("Blogs");
   });
   // beforeEach(function () {
   //   cy.request("POST", `${Cypress.env("BACKEND")}/testing/reset`);
