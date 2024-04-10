@@ -35,6 +35,12 @@ if (process.env.NODE_ENV === "test") {
   application.use("/api/testing", testingRouter);
 }
 
+application.get("/health", (req, res) => {
+  // eslint-disable-next-line no-constant-condition
+  if (true) throw "error...  ";
+  res.send("ok");
+});
+
 application.use(middleware.requestLogger);
 application.use(middleware.unknownEndpoint);
 application.use(middleware.errorHandler);
