@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import blogReducer from "./src/reducers/blogReducer.js";
-import notificationReducer from "./src/reducers/notificationReducer.js";
-import userReducer from "./src/reducers/userReducer.js";
+import blogReducer from "./src/reducers/blogReducer";
+import notificationReducer from "./src/reducers/notificationReducer";
+import userReducer from "./src/reducers/userReducer";
 
 const combinedStore = configureStore({
   reducer: {

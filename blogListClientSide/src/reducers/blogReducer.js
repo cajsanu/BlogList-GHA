@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import blogRequests from "../requests/blogs.js";
+import blogRequests from "../requests/blogs";
 
 const blogSlice = createSlice({
   name: "blogs",
