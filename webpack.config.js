@@ -7,6 +7,9 @@ module.exports = {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
   },
+  resolve: {
+    extensions: [".*", ".js", ".jsx"],
+  },
   module: {
     rules: [
       {
@@ -39,9 +42,6 @@ module.exports = {
         ],
       },
     ],
-  },
-  resolve: {
-    extensions: [".*", ".js", ".jsx"],
   },
   performance: { hints: false },
 };

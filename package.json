@@ -7,7 +7,7 @@
     "start": "cross-env NODE_ENV=production node index.js",
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "build:ui": "rm -rf dist && cd ./blogListClientSide && npm run build && cp -r dist ..",
-    "build": "webpack --mode production",
+    "buildd": "webpack --mode production",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push",
     "eslint": "eslint .",
     "eslint:fix": "eslint. --fix",
