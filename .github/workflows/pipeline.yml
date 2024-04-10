@@ -1,0 +1,39 @@
+name: Deployment pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+
+jobs:
+  simple_deployment_pipeline:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install dependencies
+        run: npm install
+      - name: Check style
+        run: npm run eslint
+      - name: Run build
+        run: npm run build:ui 
+      - name: Test
+        run: npm run test
+      - name: e2e tests
+        uses: cypress-io/github-action@v5
+        with:
+          command: npm run test:e2e
+          start: npm run start:test
+          wait-on: http://localhost:3003
+    #   - name: Trigger deployment
+    #     if: ${{ github.event_name == 'push' && !(contains(join(github.event.commits.*.message), 'skip')) }}
+    #     #push is the event when a pull request is being merged to main && if the commit message contains skip then don't merge
+    #     run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_DEPLOY_HOOK_SRV }}?key=${{ secrets.RENDER_DEPLOY_HOOK_KEY }}
+
+    # Fix e2e
+     
