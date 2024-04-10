@@ -34,4 +34,6 @@ jobs:
     #     if: ${{ github.event_name == 'push' && !(contains(join(github.event.commits.*.message), 'skip')) }}
     #     #push is the event when a pull request is being merged to main && if the commit message contains skip then don't merge
     #     run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_DEPLOY_HOOK_SRV }}?key=${{ secrets.RENDER_DEPLOY_HOOK_KEY }}
+
+    # Fix e2e test
      
