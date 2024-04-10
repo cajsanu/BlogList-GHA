@@ -2,7 +2,7 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./blogListClientSide/src/index.jsx",
+  entry: "./blogListClientSide/src/main.jsx",
   output: {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),

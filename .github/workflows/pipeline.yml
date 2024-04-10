@@ -29,11 +29,9 @@ jobs:
         with:
           command: npm run test:e2e
           start: npm run start:test
-          wait-on: http://localhost:3003
+          wait-on: http://localhost:5173
     #   - name: Trigger deployment
     #     if: ${{ github.event_name == 'push' && !(contains(join(github.event.commits.*.message), 'skip')) }}
     #     #push is the event when a pull request is being merged to main && if the commit message contains skip then don't merge
     #     run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_DEPLOY_HOOK_SRV }}?key=${{ secrets.RENDER_DEPLOY_HOOK_KEY }}
-
-    # Fix e2e test
      
