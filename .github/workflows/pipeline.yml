@@ -29,7 +29,7 @@ jobs:
         with:
           command: npm run build:ui
           start: npx vite --host
-          wait-on: http://localhost:5173
+          wait-on: http://localhost:3003
     #   - name: Trigger deployment
     #     if: ${{ github.event_name == 'push' && !(contains(join(github.event.commits.*.message), 'skip')) }}
     #     #push is the event when a pull request is being merged to main && if the commit message contains skip then don't merge
